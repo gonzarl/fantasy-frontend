@@ -49,11 +49,13 @@
             <div class="pt-8 text-base font-semibold leading-7">
               <p class="text-gray-900">Dinero disponible: {{team.budget}} USD</p>
               <div v-if="drivers.length" class="flex flex-row gap-4 justify-center">
-                  <RouterLink  :to="`/team/drivers/${team.id}`">
-                    <div class="px-4 py-2 border border-transparent rounded-md shadow-sm font-medium text-white text-center bg-red-500 hover:bg-red-700">Cambiar pilotos</div>
-                  </RouterLink>
-                  <button type="button" data-modal-toggle="deleteDriversModal" data-bs-toggle="modal" data-bs-target="#deleteDriversModal" 
-                    class="px-4 py-2 border border-transparent rounded-md shadow-sm font-medium text-center text-white bg-red-500 hover:bg-red-700">Eliminar pilotos</button>
+                  <div v-if="difference !=0">
+                    <RouterLink  :to="`/team/drivers/${team.id}`">
+                      <div class="px-4 py-2 border border-transparent rounded-md shadow-sm font-medium text-white text-center bg-red-500 hover:bg-red-700">Cambiar pilotos</div>
+                    </RouterLink>
+                    <button type="button" data-modal-toggle="deleteDriversModal" data-bs-toggle="modal" data-bs-target="#deleteDriversModal" 
+                      class="px-4 py-2 border border-transparent rounded-md shadow-sm font-medium text-center text-white bg-red-500 hover:bg-red-700">Eliminar pilotos</button>
+                  </div>
               </div>
             </div>
           </div>
@@ -236,6 +238,7 @@ const f1API = "https://f1fantasy-api.herokuapp.com/";
 let race;
 let team;
 let token;
+let difference;
 
 export default {
   setup(){
@@ -267,7 +270,8 @@ export default {
       team,
       race,
       drivers: [],
-      hasTeam: false
+      hasTeam: false,
+      difference
     }
   },
   methods:{
@@ -289,6 +293,15 @@ export default {
     async getNextRace(){
       const response = await fetch(`${f1API}races/next`);
       this.race = await response.json();
+      const raceDate = new Date(this.race.date);
+      const currDate = new Date();
+      this.difference = this.getDifferenceBetweenDates(raceDate, currDate);
+    },
+    getDifferenceBetweenDates(dateA, dateB){
+      const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+      const utcA = Date.UTC(dateA.getFullYear(), dateA.getMonth(), dateA.getDate());
+      const utcB = Date.UTC(dateB.getFullYear(), dateB.getMonth(), dateB.getDate());
+      return Math.floor((utcA - utcB) / _MS_PER_DAY)
     },
     async getDrivers(id){
       const response = await fetch(`${f1API}drivers_in_teams/${id}`);

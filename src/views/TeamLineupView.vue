@@ -12,7 +12,7 @@
                             <div class="pt-4 text-base leading-7 text-gray-600 ">
                                 <p class="text-xl text-gray-900 text-center">Dinero total disponible: 1000000 USD</p>
                                 <p class="text-xl font-bold text-center">Pilotos seleccionados:</p>
-                                <div class="grid xl:grid-cols-2 sm:grid-cols-1 gap-4 my-4">
+                                <div class="grid xl:grid-cols-2 sm:grid-cols-1 justify-center gap-4 my-4">
                                     <DriverFormCard 
                                         @click="changeFirstDriver()"
                                         :propId="`${drivers[0].id}`"

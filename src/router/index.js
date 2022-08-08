@@ -21,12 +21,12 @@ const router = createRouter({
       name: 'driver',
       component: DriverView
     },{
-      path: '/team/drivers/:id',
+      path: '/team/drivers/',
       name: 'teamDrivers',
       component: TeamLineupView,
       beforeEnter: authGuard
     },{
-      path: '/team/create/:id',
+      path: '/team/create/',
       name: 'teamCreateDrivers',
       component: CreateTeamView,
       beforeEnter: authGuard

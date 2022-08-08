@@ -42,7 +42,7 @@
               class="p-2 mx-auto"/>
             </div>
             <div v-else>
-              <RouterLink :to="`/team/create/${team.id}`" class="flex items-center justify-center">
+              <RouterLink :to="`/team/create/`" class="flex items-center justify-center">
                 <div class="px-4 py-2 my-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-500 hover:bg-red-700">Asignar pilotos</div>
               </RouterLink>
             </div>
@@ -50,7 +50,7 @@
               <p class="text-gray-900">Dinero disponible: {{team.budget}} USD</p>
               <div v-if="drivers.length" class="flex flex-row gap-4 justify-center">
                   <div v-if="difference !=0">
-                    <RouterLink  :to="`/team/drivers/${team.id}`">
+                    <RouterLink  :to="`/team/drivers/`">
                       <div class="px-4 py-2 border border-transparent rounded-md shadow-sm font-medium text-white text-center bg-red-500 hover:bg-red-700">Cambiar pilotos</div>
                     </RouterLink>
                     <button type="button" data-modal-toggle="deleteDriversModal" data-bs-toggle="modal" data-bs-target="#deleteDriversModal" 
@@ -185,7 +185,7 @@
                     text-white font-medium text-xs leading-tight uppercase rounded shadow-md
                     hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0
                     active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out ml-1">
-                    Guardar
+                    Eliminar
                   </button>
                 </div>
             </div>
@@ -198,7 +198,7 @@
         <div class="modal-dialog relative w-auto pointer-events-none">
             <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
                 <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-                  <h5 class="text-xl font-medium leading-normal text-gray-800" id="deleteDriversLabel">Eliminar equipo</h5>
+                  <h5 class="text-xl font-medium leading-normal text-gray-800" id="deleteDriversLabel">Eliminar pilotos</h5>
                   <button type="button"
                   class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
                   data-bs-dismiss="modal" aria-label="Cerrar"></button>
@@ -219,7 +219,7 @@
                     text-white font-medium text-xs leading-tight uppercase rounded shadow-md
                     hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0
                     active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out ml-1">
-                    Guardar
+                    Eliminar
                   </button>
                 </div>
             </div>

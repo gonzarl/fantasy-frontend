@@ -42,18 +42,13 @@
               class="p-2 mx-auto"/>
             </div>
             <div v-else>
-<<<<<<< HEAD
               <RouterLink :to="`/team/create/`" class="flex items-center justify-center">
-=======
-              <RouterLink :to="`/team/create/${team.id}`" class="flex items-center justify-center">
->>>>>>> cabe34e1c2710802b6cc2d59c9fca482d0a1b675
                 <div class="px-4 py-2 my-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-500 hover:bg-red-700">Asignar pilotos</div>
               </RouterLink>
             </div>
             <div class="pt-8 text-base font-semibold leading-7">
               <p class="text-gray-900">Dinero disponible: {{team.budget}} USD</p>
               <div v-if="drivers.length" class="flex flex-row gap-4 justify-center">
-<<<<<<< HEAD
                   <div v-if="difference !=0">
                     <RouterLink  :to="`/team/drivers/`">
                       <div class="px-4 py-2 border border-transparent rounded-md shadow-sm font-medium text-white text-center bg-red-500 hover:bg-red-700">Cambiar pilotos</div>
@@ -61,13 +56,6 @@
                     <button type="button" data-modal-toggle="deleteDriversModal" data-bs-toggle="modal" data-bs-target="#deleteDriversModal" 
                       class="px-4 py-2 border border-transparent rounded-md shadow-sm font-medium text-center text-white bg-red-500 hover:bg-red-700">Eliminar pilotos</button>
                   </div>
-=======
-                  <RouterLink  :to="`/team/drivers/${team.id}`">
-                    <div class="px-4 py-2 border border-transparent rounded-md shadow-sm font-medium text-white text-center bg-red-500 hover:bg-red-700">Cambiar pilotos</div>
-                  </RouterLink>
-                  <button type="button" data-modal-toggle="deleteDriversModal" data-bs-toggle="modal" data-bs-target="#deleteDriversModal" 
-                    class="px-4 py-2 border border-transparent rounded-md shadow-sm font-medium text-center text-white bg-red-500 hover:bg-red-700">Eliminar pilotos</button>
->>>>>>> cabe34e1c2710802b6cc2d59c9fca482d0a1b675
               </div>
             </div>
           </div>

@@ -49,7 +49,7 @@
             <div class="pt-8 text-base font-semibold leading-7">
               <p class="text-gray-900">Dinero disponible: {{team.budget}} USD</p>
               <div v-if="drivers.length">
-                  <div v-if="difference !=0" class="flex flex-row gap-4 justify-center">
+                  <div v-if="difference > 1" class="flex flex-row gap-4 justify-center">
                     <RouterLink  :to="`/team/drivers/`">
                       <div class="px-4 py-2 border border-transparent rounded-md shadow-sm font-medium text-white text-center bg-red-500 hover:bg-red-700">Cambiar pilotos</div>
                     </RouterLink>
@@ -301,7 +301,7 @@ export default {
       const _MS_PER_DAY = 1000 * 60 * 60 * 24;
       const utcA = Date.UTC(dateA.getFullYear(), dateA.getMonth(), dateA.getDate());
       const utcB = Date.UTC(dateB.getFullYear(), dateB.getMonth(), dateB.getDate());
-      return Math.floor((utcA - utcB) / _MS_PER_DAY)
+      return Math.floor((utcA - utcB) / _MS_PER_DAY) +1
     },
     async getDrivers(id){
       const response = await fetch(`${f1API}drivers_in_teams/${id}`);
